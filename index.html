@@ -29,9 +29,9 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(17, 17, 17, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         nav .nav-inner {
@@ -62,13 +62,13 @@
 
         nav a.nav-link {
             text-decoration: none;
-            color: #333;
+            color: #e5e5e5;
             font-weight: 500;
             transition: color 0.3s;
         }
 
         nav a.nav-link:hover {
-            color: #9c9835;
+            color: rgb(102, 145, 158);
         }
 
         /* Mobile Menu */
@@ -81,9 +81,9 @@
         }
 
         .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #333;
+            width: 22px;
+            height: 1.5px;
+            background: #ffffff;
             border-radius: 2px;
             transition: 0.3s;
         }
@@ -94,9 +94,9 @@
             top: 64px;
             left: 0;
             right: 0;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(17, 17, 17, 0.98);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             flex-direction: column;
             gap: 15px;
             padding: 20px;
@@ -105,7 +105,7 @@
 
         .mobile-menu a {
             text-decoration: none;
-            color: #333;
+            color: #e5e5e5;
             font-weight: 500;
             padding: 10px;
             border-radius: 8px;
@@ -113,7 +113,7 @@
         }
 
         .mobile-menu a:hover {
-            background: #f0f0f0;
+            background: rgba(255, 255, 255, 0.08);
         }
 
         /* Responsive */
@@ -639,7 +639,7 @@
                         <h3 class="mt-2 text-lg font-bold text-white">Movie2U</h3>
                         <p class="mt-2 text-sm text-gray-500 line-clamp-2">Movie review and recommendation web application.</p>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">Laravel</span>
+                            <span class="text-xs text-gray-500">Laravel, MySQL</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
@@ -653,9 +653,9 @@
                     <div class="p-5">
                         <p class="text-xs text-gray-500 uppercase tracking-wide">Mobile Application</p>
                         <h3 class="mt-2 text-lg font-bold text-white">ReadHub</h3>
-                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">A mobile application for discovering and managing books.</p>
+                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">A mobile application for reading, searching for, and managing books.</p>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">Kotlin</span>
+                            <span class="text-xs text-gray-500">Kotlin, MySQL</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
@@ -671,7 +671,7 @@
                         <h3 class="mt-2 text-lg font-bold text-white">Sparkle Dating</h3>
                         <p class="mt-2 text-sm text-gray-500 line-clamp-2">Dating application with mutual matching functionality.</p>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">Spring Boot</span>
+                            <span class="text-xs text-gray-500">Java, Spring Boot, MySQL</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
@@ -687,7 +687,7 @@
                         <h3 class="mt-2 text-lg font-bold text-white">Play Nook</h3>
                         <p class="mt-2 text-sm text-gray-500 line-clamp-2">Game marketplace interface inspired by digital game stores.</p>
                         <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">HTML / CSS / JS</span>
+                            <span class="text-xs text-gray-500">HTML, CSS</span>
                             <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
@@ -736,7 +736,7 @@
                             <img src="/images/CINEPLEXTH.png" alt="CINEPLEX TH">
                             <div class="coverflow-caption">
                                 <p class="text-white font-semibold text-sm truncate">CINEPLEX TH</p>
-                                <p class="text-white/70 text-xs mt-0.5">Real-time Weather Tracking Application</p>
+                                <p class="text-white/70 text-xs mt-0.5">Movie Database &amp; Review Platform</p>
                             </div>
                         </button>
 
@@ -744,7 +744,7 @@
                             <img src="/images/KhonKaen.png" alt="Khon Kaen">
                             <div class="coverflow-caption">
                                 <p class="text-white font-semibold text-sm truncate">Khon Kaen</p>
-                                <p class="text-white/70 text-xs mt-0.5">Movie Database &amp; Review Platform</p>
+                                <p class="text-white/70 text-xs mt-0.5">Khon Kaen Province Guide Website</p>
                             </div>
                         </button>
 
@@ -853,7 +853,6 @@
             </div>
             <div id="modalLinks" class="flex gap-4">
                 <a id="liveLink" href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Live Demo</a>
-                <a id="githubLink" href="#" class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900">GitHub</a>
             </div>
         </div>
     </div>
@@ -878,75 +877,66 @@
         const projectData = {
             'personal-1': {
                 title: 'MeowMoney',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=MeowMoney',
-                description: 'A personal finance tracking app with a cute cat theme. Built with React and Supabase, it helps users manage their expenses and savings with ease.',
-                tech: ['React', 'Tailwind CSS', 'Supabase', 'Chart.js'],
-                live: '#',
-                github: '#'
+                image: '/images/MeowMoney.png',
+                description: 'A personal finance tracking app with a cute cat mascot theme. Built with React and Vite, it helps users manage their expenses and savings with an engaging, playful interface.',
+                tech: ['React', 'Vite', 'Tailwind CSS', 'Chart.js', 'MongoDB'],
+                live: 'https://meowmoney-nine.vercel.app/'
             },
             'personal-2': {
                 title: 'CompMart',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=CompMart',
-                description: 'A modern e-commerce platform featuring a unique claymorphism design. Users can browse, search, and purchase products seamlessly.',
-                tech: ['Next.js', 'Tailwind CSS', 'Stripe', 'MongoDB'],
-                live: '#',
-                github: '#'
+                image: '/images/compmart.png',
+                description: 'A modern e-commerce platform featuring a unique claymorphism design aesthetic. Built with Next.js and Supabase, users can browse, search, and purchase products seamlessly.',
+                tech: ['Next.js', 'Supabase', 'Tailwind CSS', 'Claymorphism Design'],
+                live: 'https://comp-mart-hazel.vercel.app/'
             },
             'personal-3': {
-                title: 'Weather App',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Weather',
-                description: 'Real-time weather application with beautiful UI and detailed forecasts. Fetches data from OpenWeather API.',
-                tech: ['React', 'API Integration', 'Responsive Design'],
-                live: '#',
-                github: '#'
+                title: 'CINEPLEX TH',
+                image: '/images/CINEPLEXTH.png',
+                description: 'A comprehensive movie database and review platform where users can search, review, and rate their favorite movies. Fetches data from movie APIs.',
+                tech: ['HTML', 'CSS', 'JavaScript'],
+                live: './cineplex.html',
             },
             'personal-4': {
-                title: 'Movie DB',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=MovieDB',
-                description: 'A comprehensive movie database platform where users can search, review, and rate their favorite movies.',
-                tech: ['React', 'Node.js', 'MongoDB', 'TMDB API'],
-                live: '#',
-                github: '#'
+                title: 'Khon Kaen',
+                image: '/images/KhonKaen.png',
+                description: 'A website introducing Khon Kaen province, featuring information on tourist attractions, famous local cuisine, and traditions and culture.',
+                tech: ['HTML', 'CSS', 'JavaScript'],
+                live: './khonkaen.html'
             },
             'uni-1': {
-                title: 'E-Commerce App',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
-                description: 'University project: Full-stack e-commerce application built during Web Development course.',
-                tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
-                live: '#',
-                github: '#'
+                title: 'Recyclable Waste Fund System',
+                image: '/images/recyclable.png',
+                description: 'A web application developed to manage recyclable waste purchasing, member accounts, financial transactions, inventory, and fund management. Final year capstone project.',
+                tech: ['EJS Template', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS', 'Google API'],
+                live: 'https://khampom-recyclable-waste-fund.onrender.com'
             },
             'uni-2': {
-                title: 'Chat System',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
-                description: 'Real-time chat application built with Socket.io for Database course project.',
-                tech: ['Node.js', 'Socket.io', 'MongoDB', 'React'],
-                live: '#',
-                github: '#'
-            },
-            'uni-3': {
-                title: 'Task Manager',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
-                description: 'Project management application developed for Software Engineering course.',
-                tech: ['Java', 'Spring Boot', 'React', 'MySQL'],
-                live: '#',
-                github: '#'
-            },
-            'uni-4': {
-                title: 'Blog Platform',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
-                description: 'Content management system for blogging built during Web Development course.',
+                title: 'Movie2U',
+                image: '/images/movie1.png',
+                description: 'Movie review and recommendation web application where users can discover movies, read reviews, and get personalized recommendations based on their preferences.',
                 tech: ['Laravel', 'MySQL', 'Blade Templates', 'Bootstrap'],
                 live: '#',
-                github: '#'
+            },
+            'uni-3': {
+                title: 'ReadHub',
+                image: '/images/readhub.png',
+                description: 'A mobile application for reading, searching for, and managing books. Users can create personal libraries, track reading progress, and discover new titles.',
+                tech: ['Kotlin', 'MySQL', 'Android Studio'],
+                live: '#'
+            },
+            'uni-4': {
+                title: 'Sparkle Dating',
+                image: '/images/sparkle.png',
+                description: 'Dating application with mutual matching functionality. Users can create profiles, discover matches, and connect with compatible individuals.',
+                tech: ['Java', 'Spring Boot', 'MySQL'],
+                live: '#'
             },
             'uni-5': {
-                title: 'Social Network',
-                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
-                description: 'Social networking platform project for Advanced Database course.',
-                tech: ['Node.js', 'React', 'PostgreSQL', 'Passport.js'],
-                live: '#',
-                github: '#'
+                title: 'Play Nook',
+                image: '/images/Playnook1.png',
+                description: 'Game marketplace interface inspired by digital game stores. Showcases game listings, pricing, and purchase functionality with a modern, user-friendly design.',
+                tech: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+                live: '#'
             }
         };
 
@@ -967,7 +957,6 @@
             });
 
             document.getElementById('liveLink').href = project.live;
-            document.getElementById('githubLink').href = project.github;
             
             document.getElementById('projectModal').classList.add('active');
         }
