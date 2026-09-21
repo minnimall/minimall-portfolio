@@ -7,6 +7,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Prompt:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -15,15 +17,1155 @@
         html {
             scroll-behavior: smooth;
         }
+
+        section[id] {
+            scroll-margin-top: 64px;
+        }
+
+        /* Navbar Styles (sticky top bar, not floating) */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        nav .nav-inner {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a.nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a.nav-link:hover {
+            color: #667eea;
+        }
+
+        /* Mobile Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: sticky;
+            top: 64px;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
+            flex-direction: column;
+            gap: 15px;
+            padding: 20px;
+            z-index: 49;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            background: #f0f0f0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-menu.active {
+                display: flex;
+            }
+        }
+
+        /* ===== Scroll reveal ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Circular Carousel */
+        .circular-carousel {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+
+        .circular-item {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .circular-item:hover {
+            transform: scale(1.1);
+        }
+
+        .circular-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* ===== Personal Projects Cover Flow (same mechanics as RUBSARB shop carousel) ===== */
+        .coverflow-stage {
+            position: relative;
+            height: 380px;
+            perspective: 1400px;
+            perspective-origin: 50% 50%;
+            touch-action: pan-y;
+            overflow: hidden;
+        }
+        @media (min-width: 640px) {
+            .coverflow-stage { height: 440px; }
+        }
+        .coverflow-track {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+        }
+        .coverflow-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 220px;
+            aspect-ratio: 1 / 1;
+            margin-top: -110px;
+            margin-left: -110px;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            background: #f1f5f9;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15), 0 8px 10px -6px rgba(0,0,0,0.1);
+            will-change: transform, opacity;
+            transition: transform 0.55s cubic-bezier(.22,.9,.36,1), opacity 0.55s ease, box-shadow 0.55s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+        @media (min-width: 640px) {
+            .coverflow-card { width: 260px; margin-top: -130px; margin-left: -130px; }
+        }
+        .coverflow-card.is-active {
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35);
+        }
+        .coverflow-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+        .coverflow-card .coverflow-caption {
+            position: absolute;
+            bottom: 0;
+            inset-inline: 0;
+            padding: 0.75rem 0.9rem 0.7rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.15) 70%, transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .coverflow-card.is-active .coverflow-caption {
+            opacity: 1;
+        }
+        .coverflow-nav-btn {
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .coverflow-nav-btn:hover {
+            background: #0f172a;
+            color: white;
+            transform: scale(1.06);
+        }
+        .coverflow-dot {
+            width: 0.4rem;
+            height: 0.4rem;
+            border-radius: 9999px;
+            background: #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .coverflow-dot.is-active {
+            width: 1.3rem;
+            background: #667eea;
+        }
+
+        /* ===== Skills Marquee (adapted from RUBSARB categories marquee) ===== */
+        .skills-marquee-wrap {
+            position: relative;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+        }
+        .skills-marquee-track {
+            display: flex;
+            width: max-content;
+        }
+        .skills-marquee-track.dir-left {
+            animation: skills-marquee-left 28s linear infinite;
+        }
+        .skills-marquee-track.dir-right {
+            animation: skills-marquee-right 28s linear infinite;
+        }
+        .skills-marquee-track:hover {
+            animation-play-state: paused;
+        }
+        @keyframes skills-marquee-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        @keyframes skills-marquee-right {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+        .skill-chip {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-shrink: 0;
+            width: 92px;
+            height: 92px;
+            margin: 0 10px;
+            border-radius: 1.25rem;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        .skill-chip:hover {
+            transform: translateY(-4px) scale(1.06);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+            border-color: #cbd5e1;
+        }
+        .skill-chip img,
+        .skill-chip i {
+            font-size: 34px;
+        }
+        .skill-chip img {
+            width: 34px;
+            height: 34px;
+            object-fit: contain;
+        }
+        .skill-tooltip {
+            position: fixed;
+            background: #111111;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.25);
+            z-index: 9999;
+            transform: translate(-50%, -8px);
+        }
+        .skill-tooltip.show {
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
     </style>
 </head>
-<body>
+<body class="bg-gray-50">
+    <!-- Top Navbar -->
     <nav>
-
+        <div class="nav-inner">
+            <a href="#about" class="nav-logo">
+                <div><img src="/images/mew.png" class="w-20 h-15"></div>
+            </a>
+            <ul>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#university-projects" class="nav-link">University</a></li>
+                <li><a href="#personal-projects" class="nav-link">Portfolio</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </nav>
 
-    <section>
-        
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#university-projects">University</a>
+        <a href="#personal-projects">Portfolio</a>
+        <a href="#skills">Skills</a>
+    </div>
+
+    <!-- Section: About -->
+    <section id="about" class="reveal min-h-screen flex items-center justify-center px-5 py-20 bg-[#111111]">
+        <div class="max-w-7xl w-full grid md:grid-cols-2 gap-10 items-center">
+            <div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">Dullapah Taweesaengsiri</h1>
+                <p class="text-xl text-gray-300 mb-4">Frontend &amp; Full-Stack Developer</p>
+                <p class="text-gray-400 leading-relaxed mb-8 max-w-xl">
+                    Recent Information Technology graduate from the College of Computing,
+                    Khon Kaen University, with a strong interest in Frontend and Full-Stack Development.
+                </p>
+
+                <!-- Contact -->
+                <div class="flex flex-wrap gap-x-6 gap-y-3 mt-1">
+                    <p class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-envelope"></i>dullapah.t@gmail.com</p>
+                    <p class="flex items-center gap-2 text-sm text-gray-400"><i class="fa-solid fa-phone"></i>094-3919685</p>
+                </div>
+
+                <!-- Social -->
+                <div class="flex gap-6 mt-8">
+                    <a href="https://github.com/minnimall" class="text-gray-400 hover:text-white transition text-2xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/dullapah-taweesaengsiri-5b9184435/"class="text-gray-400 hover:text-white transition text-2xl">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-end">
+                <img src="/images/ปกport4.jpg" alt="Profile" class="w-full max-w-md aspect-[4/5] rounded-2xl shadow-2xl object-cover">
+            </div>
+        </div>
     </section>
+
+    <!-- Section: Education -->
+    <section id="education" class="reveal min-h-screen flex items-center px-5 py-24">
+        <div class="max-w-7xl w-full mx-auto">
+
+            <!-- Section Header -->
+            <div class="mb-14">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-8 h-0.5 bg-slate-500"></span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-slate-400">Education</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">My Education</h2>
+                <p class="mt-4 max-w-5xl text-gray-500 leading-relaxed">Academic background and the field of study that shaped my foundation in software and web development.</p>
+            </div>
+
+            <!-- Education -->
+            <div class="relative">
+                <div class="hidden md:block absolute left-5 top-0 bottom-0 w-px bg-gray-200 md:left-1/2 md:-translate-x-1/2"></div>
+                    <div class="relative grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+                        <!-- Left: Image -->
+                        <div class="md:pr-8">
+                            <div class="group relative overflow-hidden rounded-3xl bg-gray-100 shadow-sm">
+                                <img
+                                    src="/images/CP.jpg"
+                                    alt="Khon Kaen University"
+                                    class="w-full aspect-[4/3] object-cover transition duration-500 group-hover:scale-105"
+                                >
+                                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition duration-300"></div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Dot -->
+                        <div class="hidden md:block absolute left-5 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-gray-900 ring-8 ring-white md:left-1/2"></div>
+
+                    <!-- Right: Content -->
+                    <div class="md:pl-8">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-semibold tracking-wide mb-5 mt-6 md:mt-0"> 2022 — 2026 </span>
+
+                        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">Bachelor of Science</h3>
+
+                        <p class="mt-1 text-lg font-medium text-gray-600">Information Technology</p>
+                        <p class="mt-4 text-gray-500">Khon Kaen University</p>
+
+                        <!-- Details -->
+                        <div class="relative mt-7 space-y-4">
+                            <!-- เส้นเล็กเฉพาะมือถือ: วิ่งอยู่หลังไอคอน ไม่ทับข้อความ -->
+                            <div class="md:hidden absolute left-[17px] top-2 bottom-2 w-px bg-gray-200 -z-10"></div>
+
+                            <div class="flex gap-4">
+                                <div class="w-9 h-9 shrink-0 rounded-xl bg-gray-100 flex items-center justify-center text-gray-600">
+                                    <i class="fa-solid fa-code text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">Track</p>
+                                    <p class="mt-1 text-sm text-gray-700">Mobile and Web Application Development</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="w-9 h-9 shrink-0 rounded-xl bg-gray-100
+                                            flex items-center justify-center text-gray-600">
+                                    <i class="fa-solid fa-chart-simple text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">GPA</p>
+                                    <p class="mt-1 text-sm text-gray-700">3.31</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <div class="w-9 h-9 shrink-0 rounded-xl bg-gray-100
+                                            flex items-center justify-center text-gray-600">
+                                    <i class="fa-solid fa-laptop-code text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">Focus</p>
+                                    <p class="mt-1 text-sm text-gray-700">Web Development</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: University Projects -->
+    <section id="university-projects" class="reveal min-h-screen flex items-center justify-center px-5 py-24 bg-[#171717]">
+        <div class="max-w-7xl w-full mx-auto">
+
+            <!-- Section Header -->
+            <div class="mb-14">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-8 h-0.5 bg-slate-500"></span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-slate-400">my projects</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">University Projects</h2>
+                <p class="mt-4 max-w-5xl text-gray-400 leading-relaxed">
+                    A collection of projects I developed during my studies, covering web, mobile, backend, and application development.
+                </p>
+            </div>
+
+            <!-- Featured Project -->
+            <div onclick="openProjectModal('uni-1')" class="group cursor-pointer grid lg:grid-cols-2 overflow-hidden rounded-3xl bg-[#202020] border border-white/5 hover:border-white/10 transition duration-300 mb-8">
+                <!-- Image -->
+                <div class="relative overflow-hidden aspect-video lg:aspect-auto">
+                    <img src="/images/recyclable.png" alt="Recyclable Waste Fund System" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition"></div>
+                    <span class="absolute top-5 left-5 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-xs font-semibold">
+                        <i class="fa-solid fa-star text-[10px]"></i> Featured Project
+                    </span>
+                </div>
+                <!-- Content -->
+                <div class="p-7 md:p-10 flex flex-col justify-center">
+                    <p class="text-xs uppercase tracking-[0.18em] text-gray-500 font-semibold mb-3">Final Year Project</p>
+                    <h3 class="text-2xl md:text-3xl font-bold text-white">Recyclable Waste Fund System</h3>
+                    <p class="mt-4 text-gray-400 leading-relaxed">
+                        A web application developed to manage recyclable waste purchasing, member accounts, financial transactions, inventory, and fund management.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-6">
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs">EJS Template</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs">Node.js</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs">Express.js</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs">MongoDB</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs">Tailwind CSS</span>
+                        <span class="px-3 py-1 rounded-full bg-white/5 text-gray-300 text-xs">Google API</span>
+                    </div>
+                    <div class="mt-7 flex items-center gap-2 text-sm font-semibold text-gray-300 group-hover:text-white transition">
+                        <a href="https://khampom-recyclable-waste-fund.onrender.com" target="_blank" rel="noopener noreferrer" class="inline-flex w-fit items-center gap-2 rounded-lg border border-[#b09070]/40 bg-[#b09070]/10 px-4 py-2 text-sm font-medium tracking-wide text-[#8f7256] dark:border-primary/30 dark:bg-primary/5 dark:text-primary no-underline transition-colors duration-200 hover:border-[#b09070]/60 hover:bg-[#b09070]/15 dark:hover:border-primary/50 dark:hover:bg-primary/10">
+                            View Project<i class="fa-solid fa-arrow-right transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Projects -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+                <!-- Project 2 -->
+                <div onclick="openProjectModal('uni-2')" class="group cursor-pointer rounded-2xl overflow-hidden bg-[#202020] border border-white/5 hover:border-white/10 transition duration-300">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="/images/movie1.png" alt="Movie2U" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
+                        <h3 class="mt-2 text-lg font-bold text-white">Movie2U</h3>
+                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Movie review and recommendation web application.</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Laravel</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div onclick="openProjectModal('uni-3')" class="group cursor-pointer rounded-2xl overflow-hidden bg-[#202020] border border-white/5 hover:border-white/10 transition duration-300">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="/images/readhub.png" alt="ReadHub" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Mobile Application</p>
+                        <h3 class="mt-2 text-lg font-bold text-white">ReadHub</h3>
+                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">A mobile application for discovering and managing books.</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Kotlin</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div onclick="openProjectModal('uni-4')" class="group cursor-pointer rounded-2xl overflow-hidden bg-[#202020] border border-white/5 hover:border-white/10 transition duration-300">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="/images/sparkle.png" alt="Sparkle Dating" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
+                        <h3 class="mt-2 text-lg font-bold text-white">Sparkle Dating</h3>
+                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Dating application with mutual matching functionality.</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Spring Boot</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div onclick="openProjectModal('uni-5')" class="group cursor-pointer rounded-2xl overflow-hidden bg-[#202020] border border-white/5 hover:border-white/10 transition duration-300">
+                    <div class="relative overflow-hidden aspect-[4/3]">
+                        <img src="/images/Playnook1.png" alt="Play Nook" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="p-5">
+                        <p class="text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
+                        <h3 class="mt-2 text-lg font-bold text-white">Play Nook</h3>
+                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Game marketplace interface inspired by digital game stores.</p>
+                        <div class="mt-4 flex items-center justify-between">
+                            <span class="text-xs text-gray-500">HTML / CSS / JS</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Personal Projects (Cover Flow Carousel - same style as RUBSARB shop carousel) -->
+    <section id="personal-projects" class="reveal min-h-screen flex items-center justify-center px-5 py-20">
+        <div class="max-w-6xl w-full">
+            <!-- Section Header -->
+            <div class="mb-14">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-8 h-0.5 bg-slate-500"></span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-slate-400">Side Projects</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Side Projects</h2>
+                <p class="mt-4 max-w-5xl text-gray-400 leading-relaxed">
+                    A collection of personal projects I built to explore new technologies, practice my development skills, and bring ideas to life.
+                </p>
+            </div>
+
+            <div class="relative">
+                <div id="projects-coverflow" class="coverflow-stage">
+                    <div id="projects-coverflow-track" class="coverflow-track">
+
+                        <button type="button" class="coverflow-card" data-project-id="personal-1">
+                            <img src="/images/MeowMoney.png" alt="MeowMoney">
+                            <div class="coverflow-caption">
+                                <p class="text-white font-semibold text-sm truncate">MeowMoney</p>
+                                <p class="text-white/70 text-xs mt-0.5">Personal Finance Tracker with Cat Theme</p>
+                            </div>
+                        </button>
+
+                        <button type="button" class="coverflow-card" data-project-id="personal-2">
+                            <img src="/images/compmart.png" alt="CompMart">
+                            <div class="coverflow-caption">
+                                <p class="text-white font-semibold text-sm truncate">CompMart</p>
+                                <p class="text-white/70 text-xs mt-0.5">E-Commerce Platform with Claymorphism Design</p>
+                            </div>
+                        </button>
+
+                        <button type="button" class="coverflow-card" data-project-id="personal-3">
+                            <img src="/images/CINEPLEXTH.png" alt="CINEPLEX TH">
+                            <div class="coverflow-caption">
+                                <p class="text-white font-semibold text-sm truncate">CINEPLEX TH</p>
+                                <p class="text-white/70 text-xs mt-0.5">Real-time Weather Tracking Application</p>
+                            </div>
+                        </button>
+
+                        <button type="button" class="coverflow-card" data-project-id="personal-4">
+                            <img src="/images/KhonKaen.png" alt="Khon Kaen">
+                            <div class="coverflow-caption">
+                                <p class="text-white font-semibold text-sm truncate">Khon Kaen</p>
+                                <p class="text-white/70 text-xs mt-0.5">Movie Database &amp; Review Platform</p>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- ปุ่มซ้าย/ขวา -->
+                <button onclick="projectsCoverflowMove(-1)" aria-label="Previous project"
+                        class="coverflow-nav-btn absolute left-0 sm:left-2 top-1/2 -translate-y-1/2 z-20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button onclick="projectsCoverflowMove(1)" aria-label="Next project"
+                        class="coverflow-nav-btn absolute right-0 sm:right-2 top-1/2 -translate-y-1/2 z-20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
+
+                <!-- Dots -->
+                <div id="projects-coverflow-dots" class="flex justify-center items-center gap-2 mt-8"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: Skills -->
+    <section id="skills" class="reveal min-h-screen flex items-center justify-center px-5 py-24 bg-[#f5f5f5]">
+        <div class="max-w-7xl w-full mx-auto">
+            <div class="mb-14">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="w-8 h-0.5 bg-slate-500"></span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-slate-400">All skills</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-gray-900">Skills &amp; Tools</h2>
+                <p class="mt-4 max-w-2xl text-gray-500 leading-relaxed">Technologies and tools I use for building web and software applications.</p>
+            </div>
+
+            <!-- ===== Skills Marquee (logos running continuously, RUBSARB categories style) ===== -->
+            <div class="mb-14">
+                <div class="skills-marquee-wrap">
+                    <div class="skills-marquee-track dir-left" id="skillsMarqueeRow1"></div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+                <!-- Programming Languages -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition">
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-6">Programming Languages</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" class="w-10 h-10" alt="HTML5"><span class="text-xs text-gray-600">HTML</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" class="w-10 h-10" alt="CSS3"><span class="text-xs text-gray-600">CSS</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" class="w-10 h-10" alt="JavaScript"><span class="text-xs text-gray-600">JavaScript</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" class="w-10 h-10" alt="Java"><span class="text-xs text-gray-600">Java</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><i class="devicon-php-plain colored text-5xl"></i><span class="text-xs text-gray-600">PHP</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg" class="w-10 h-10" alt="Kotlin"><span class="text-xs text-gray-600">Kotlin</span></div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Libraries -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition">
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-6">Frameworks &amp; Libraries</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg" class="w-10 h-10" alt="Laravel"><span class="text-xs text-gray-600">Laravel</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" class="w-10 h-10" alt="React"><span class="text-xs text-gray-600">React</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" class="w-10 h-10" alt="Spring Boot"><span class="text-xs text-gray-600">Spring Boot</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><i class="devicon-express-original text-5xl"></i><span class="text-xs text-gray-600">Express.js</span></div>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition">
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-6">Databases</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg" class="w-10 h-10" alt="MongoDB"><span class="text-xs text-gray-600">MongoDB</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><i class="devicon-mysql-plain colored text-5xl"></i><span class="text-xs text-gray-600">MySQL</span></div>
+                    </div>
+                </div>
+
+                <!-- Tools & Platforms -->
+                <div class="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-lg transition">
+                    <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 mb-6">Tools &amp; Platforms</h3>
+                    <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><i class="devicon-vscode-plain colored text-5xl"></i><span class="text-xs text-gray-600">VS Code</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" class="w-10 h-10" alt="Eclipse IDE"><span class="text-xs text-gray-600">Eclipse</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><i class="devicon-github-original text-5xl"></i><span class="text-xs text-gray-600">GitHub</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" class="w-10 h-10" alt="Figma"><span class="text-xs text-gray-600">Figma</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="fade-in text-center py-8 px-5 bg-white dark:bg-[#1e1e1e] border-t border-[#e0e0e0] dark:border-[#333333]">
+        <img src="https://media.tenor.com/wWYDcbdOMWQAAAAd/cat-kiss-kiss-cat.gif" alt="cute kissing cat" class="w-[120px] rounded-full mx-auto mb-2 block" />
+        <p class="text-[#666666] dark:text-[#aaaaaa] text-sm mt-2">&copy; 2026 Dullapah Taweesaengsiri. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Modal for Projects -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+            <h2 id="modalTitle" class="text-2xl font-bold mb-4"></h2>
+            <img id="modalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg mb-4">
+            <p id="modalDescription" class="text-gray-700 mb-4"></p>
+            <div id="modalTechStack" class="mb-4">
+                <h3 class="font-bold mb-2">Technologies:</h3>
+                <div id="techList" class="flex flex-wrap gap-2"></div>
+            </div>
+            <div id="modalLinks" class="flex gap-4">
+                <a id="liveLink" href="#" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Live Demo</a>
+                <a id="githubLink" href="#" class="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900">GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Project Modal Data
+        const projectData = {
+            'personal-1': {
+                title: 'MeowMoney',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=MeowMoney',
+                description: 'A personal finance tracking app with a cute cat theme. Built with React and Supabase, it helps users manage their expenses and savings with ease.',
+                tech: ['React', 'Tailwind CSS', 'Supabase', 'Chart.js'],
+                live: '#',
+                github: '#'
+            },
+            'personal-2': {
+                title: 'CompMart',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=CompMart',
+                description: 'A modern e-commerce platform featuring a unique claymorphism design. Users can browse, search, and purchase products seamlessly.',
+                tech: ['Next.js', 'Tailwind CSS', 'Stripe', 'MongoDB'],
+                live: '#',
+                github: '#'
+            },
+            'personal-3': {
+                title: 'Weather App',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Weather',
+                description: 'Real-time weather application with beautiful UI and detailed forecasts. Fetches data from OpenWeather API.',
+                tech: ['React', 'API Integration', 'Responsive Design'],
+                live: '#',
+                github: '#'
+            },
+            'personal-4': {
+                title: 'Movie DB',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=MovieDB',
+                description: 'A comprehensive movie database platform where users can search, review, and rate their favorite movies.',
+                tech: ['React', 'Node.js', 'MongoDB', 'TMDB API'],
+                live: '#',
+                github: '#'
+            },
+            'uni-1': {
+                title: 'E-Commerce App',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
+                description: 'University project: Full-stack e-commerce application built during Web Development course.',
+                tech: ['PHP', 'MySQL', 'HTML', 'CSS', 'JavaScript'],
+                live: '#',
+                github: '#'
+            },
+            'uni-2': {
+                title: 'Chat System',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
+                description: 'Real-time chat application built with Socket.io for Database course project.',
+                tech: ['Node.js', 'Socket.io', 'MongoDB', 'React'],
+                live: '#',
+                github: '#'
+            },
+            'uni-3': {
+                title: 'Task Manager',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
+                description: 'Project management application developed for Software Engineering course.',
+                tech: ['Java', 'Spring Boot', 'React', 'MySQL'],
+                live: '#',
+                github: '#'
+            },
+            'uni-4': {
+                title: 'Blog Platform',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
+                description: 'Content management system for blogging built during Web Development course.',
+                tech: ['Laravel', 'MySQL', 'Blade Templates', 'Bootstrap'],
+                live: '#',
+                github: '#'
+            },
+            'uni-5': {
+                title: 'Social Network',
+                image: 'https://via.placeholder.com/500x300/667eea/ffffff?text=Project',
+                description: 'Social networking platform project for Advanced Database course.',
+                tech: ['Node.js', 'React', 'PostgreSQL', 'Passport.js'],
+                live: '#',
+                github: '#'
+            }
+        };
+
+        // Modal Functions
+        function openProjectModal(projectId) {
+            const project = projectData[projectId];
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalImage').src = project.image;
+            document.getElementById('modalDescription').textContent = project.description;
+            
+            const techList = document.getElementById('techList');
+            techList.innerHTML = '';
+            project.tech.forEach(tech => {
+                const tag = document.createElement('span');
+                tag.className = 'px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm';
+                tag.textContent = tech;
+                techList.appendChild(tag);
+            });
+
+            document.getElementById('liveLink').href = project.live;
+            document.getElementById('githubLink').href = project.github;
+            
+            document.getElementById('projectModal').classList.add('active');
+        }
+
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('projectModal').addEventListener('click', (e) => {
+            if (e.target.id === 'projectModal') {
+                closeProjectModal();
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav') && mobileMenu.classList.contains('active')) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // ===== Scroll reveal animation =====
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealEls.forEach((el) => revealObserver.observe(el));
+
+        // ===== Personal Projects Cover Flow (same mechanics as RUBSARB shop carousel) =====
+        (function () {
+            const stage = document.getElementById('projects-coverflow');
+            const track = document.getElementById('projects-coverflow-track');
+            const dotsWrap = document.getElementById('projects-coverflow-dots');
+            if (!stage || !track) return;
+
+            const cards = Array.from(track.querySelectorAll('.coverflow-card'));
+            const total = cards.length;
+            if (total === 0) return;
+
+            let current = 0; // start on the first card
+
+            function getSettings() {
+                const w = window.innerWidth;
+                if (w < 640) {
+                    return { spacing: 92, angle: 42, depth: 140, scaleStep: 0.16, maxVisible: 2 };
+                }
+                return { spacing: 160, angle: 45, depth: 200, scaleStep: 0.14, maxVisible: 3 };
+            }
+
+            cards.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'coverflow-dot';
+                dot.setAttribute('aria-label', `Go to project ${i + 1}`);
+                dot.addEventListener('click', () => goTo(i));
+                dotsWrap.appendChild(dot);
+            });
+            const dots = dotsWrap.querySelectorAll('.coverflow-dot');
+
+            function render() {
+                const { spacing, angle, depth, scaleStep, maxVisible } = getSettings();
+
+                cards.forEach((card, i) => {
+                    const offset = i - current;
+                    const abs = Math.abs(offset);
+
+                    card.classList.toggle('is-active', offset === 0);
+
+                    if (abs > maxVisible) {
+                        const farX = offset < 0 ? -9999 : 9999;
+                        card.style.opacity = '0';
+                        card.style.pointerEvents = 'none';
+                        card.style.transform = `translateX(${farX}px)`;
+                        card.style.zIndex = '0';
+                        return;
+                    }
+
+                    const translateX = offset * spacing;
+                    const rotateY = offset === 0 ? 0 : (offset < 0 ? angle : -angle);
+                    const translateZ = offset === 0 ? 0 : -depth;
+                    const scale = Math.max(1 - abs * scaleStep, 0.55);
+                    const opacity = 1 - abs * 0.22;
+
+                    card.style.opacity = String(Math.max(opacity, 0));
+                    card.style.pointerEvents = 'auto';
+                    card.style.zIndex = String(100 - abs);
+                    card.style.transform =
+                        `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
+                });
+
+                dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
+            }
+
+            function goTo(index) {
+                current = Math.max(0, Math.min(total - 1, index));
+                render();
+            }
+
+            window.projectsCoverflowMove = function (dir) {
+                goTo(current + dir);
+            };
+
+            // Click the active card to open the project modal; click a side card to bring it to center
+            cards.forEach((card, i) => {
+                card.addEventListener('click', () => {
+                    if (i === current) {
+                        openProjectModal(card.dataset.projectId);
+                    } else {
+                        goTo(i);
+                    }
+                });
+            });
+
+            // Swipe / Drag
+            let startX = 0;
+            let isDragging = false;
+            let dragMoved = false;
+
+            stage.addEventListener('pointerdown', (e) => {
+                isDragging = true;
+                dragMoved = false;
+                startX = e.clientX;
+            });
+            window.addEventListener('pointermove', (e) => {
+                if (!isDragging) return;
+                if (Math.abs(e.clientX - startX) > 8) dragMoved = true;
+            });
+            window.addEventListener('pointerup', (e) => {
+                if (!isDragging) return;
+                isDragging = false;
+                if (!dragMoved) return;
+                const deltaX = e.clientX - startX;
+                if (Math.abs(deltaX) > 40) {
+                    goTo(current + (deltaX < 0 ? 1 : -1));
+                }
+            });
+
+            // Keyboard nav when focused
+            stage.setAttribute('tabindex', '0');
+            stage.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') goTo(current - 1);
+                if (e.key === 'ArrowRight') goTo(current + 1);
+            });
+
+            window.addEventListener('resize', render);
+
+            render();
+        })();
+
+        // ===== Skills Marquee (adapted from RUBSARB CATEGORIES logo marquee) =====
+        (function () {
+            // ทุกโลโก้ skills ของฉัน (ภาษา, เฟรมเวิร์ค, ฐานข้อมูล, tools) — ใช้ไอคอนชุดเดียวกับใน grid ด้านล่าง
+            const skillIcons = [
+                { name: 'HTML',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+                { name: 'CSS',         img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+                { name: 'JavaScript',  img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+                { name: 'Java',        img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' },
+                { name: 'PHP',         icon: 'devicon-php-plain colored' },
+                { name: 'Kotlin',      img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg' },
+                { name: 'Laravel',     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg' },
+                { name: 'React',       img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+                { name: 'Spring Boot', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg' },
+                { name: 'Express.js',  icon: 'devicon-express-original' },
+                { name: 'MongoDB',     img: 'https://www.vectorlogo.zone/logos/mongodb/mongodb-icon.svg' },
+                { name: 'MySQL',       icon: 'devicon-mysql-plain colored' },
+                { name: 'VS Code',     icon: 'devicon-vscode-plain colored' },
+                { name: 'Eclipse',     img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg' },
+                { name: 'GitHub',      icon: 'devicon-github-original' },
+                { name: 'Figma',       img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' }
+            ];
+
+            function buildChip(skill) {
+                const chip = document.createElement('div');
+                chip.className = 'skill-chip';
+
+                const inner = skill.img
+                    ? `<img src="${skill.img}" alt="${skill.name}">`
+                    : `<i class="${skill.icon}"></i>`;
+                chip.innerHTML = inner;
+
+                const tooltip = document.createElement('span');
+                tooltip.className = 'skill-tooltip';
+                tooltip.textContent = skill.name;
+                chip.appendChild(tooltip);
+
+                chip.addEventListener('mouseenter', () => {
+                    const rect = chip.getBoundingClientRect();
+                    tooltip.style.left = (rect.left + rect.width / 2) + 'px';
+                    tooltip.style.top = rect.top + 'px';
+                    tooltip.classList.add('show');
+                });
+                chip.addEventListener('mouseleave', () => {
+                    tooltip.classList.remove('show');
+                });
+
+                return chip;
+            }
+
+            function fillRow(rowEl, list) {
+                if (!rowEl) return;
+                // สร้างสองชุดต่อกัน เพื่อให้ลูปวิ่งต่อเนื่องไม่มีรอยต่อ (เหมือน RUBSARB marquee-track)
+                for (let copy = 0; copy < 2; copy++) {
+                    list.forEach((skill) => {
+                        rowEl.appendChild(buildChip(skill));
+                    });
+                }
+            }
+
+            const row1 = document.getElementById('skillsMarqueeRow1');
+
+            // วิ่งแถวเดียว รวมทุก skill
+            fillRow(row1, skillIcons);
+        })();
+    </script>
 </body>
 </html>
