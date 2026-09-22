@@ -135,7 +135,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 1s ease-out, transform 1s ease-out;
         }
         .reveal.active {
             opacity: 1;
@@ -629,20 +629,19 @@
             </div>
 
             <!-- Other Projects -->
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
                 <!-- Project 2 -->
                 <div onclick="openProjectModal('uni-2')" class="group cursor-pointer rounded-2xl overflow-hidden bg-[#202020] border border-white/5 hover:border-white/10 transition duration-300">
                     <div class="relative overflow-hidden aspect-[4/3]">
                         <img src="/images/movie1.png" alt="Movie2U" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                     </div>
-                    <div class="p-5">
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
-                        <h3 class="mt-2 text-lg font-bold text-white">Movie2U</h3>
-                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Movie review and recommendation web application.</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">Laravel, MySQL</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                    <div class="p-3 sm:p-5">
+                        <p class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
+                        <h3 class="mt-1 sm:mt-2 text-base sm:text-lg font-bold text-white">Movie2U</h3>
+                        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500 line-clamp-2">Movie review and recommendation web application.</p>
+                        <div class="mt-2 sm:mt-4 flex items-center justify-between">
+                            <span class="text-[10px] sm:text-xs text-gray-500">Laravel, MySQL</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs sm:text-base text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
                 </div>
@@ -652,13 +651,13 @@
                     <div class="relative overflow-hidden aspect-[4/3]">
                         <img src="/images/readhub.png" alt="ReadHub" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                     </div>
-                    <div class="p-5">
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Mobile Application</p>
-                        <h3 class="mt-2 text-lg font-bold text-white">ReadHub</h3>
-                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">A mobile application for reading, searching for, and managing books.</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">Kotlin, MySQL</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                    <div class="p-3 sm:p-5">
+                        <p class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wide">Mobile Application</p>
+                        <h3 class="mt-1 sm:mt-2 text-base sm:text-lg font-bold text-white">ReadHub</h3>
+                        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500 line-clamp-2">A mobile application for reading, searching for, and managing books.</p>
+                        <div class="mt-2 sm:mt-4 flex items-center justify-between">
+                            <span class="text-[10px] sm:text-xs text-gray-500">Kotlin, MySQL</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs sm:text-base text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
                 </div>
@@ -668,13 +667,13 @@
                     <div class="relative overflow-hidden aspect-[4/3]">
                         <img src="/images/sparkle.png" alt="Sparkle Dating" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                     </div>
-                    <div class="p-5">
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
-                        <h3 class="mt-2 text-lg font-bold text-white">Sparkle Dating</h3>
-                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Dating application with mutual matching functionality.</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">Java, Spring Boot, MySQL</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                    <div class="p-3 sm:p-5">
+                        <p class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
+                        <h3 class="mt-1 sm:mt-2 text-base sm:text-lg font-bold text-white">Sparkle Dating</h3>
+                        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500 line-clamp-2">Dating application with mutual matching functionality.</p>
+                        <div class="mt-2 sm:mt-4 flex items-center justify-between">
+                            <span class="text-[10px] sm:text-xs text-gray-500">Java, Spring Boot, MySQL</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs sm:text-base text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
                 </div>
@@ -684,17 +683,16 @@
                     <div class="relative overflow-hidden aspect-[4/3]">
                         <img src="/images/Playnook1.png" alt="Play Nook" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
                     </div>
-                    <div class="p-5">
-                        <p class="text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
-                        <h3 class="mt-2 text-lg font-bold text-white">Play Nook</h3>
-                        <p class="mt-2 text-sm text-gray-500 line-clamp-2">Game marketplace interface inspired by digital game stores.</p>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="text-xs text-gray-500">HTML, CSS</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square text-gray-500 group-hover:text-white transition"></i>
+                    <div class="p-3 sm:p-5">
+                        <p class="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wide">Web Application</p>
+                        <h3 class="mt-1 sm:mt-2 text-base sm:text-lg font-bold text-white">Play Nook</h3>
+                        <p class="mt-1 sm:mt-2 text-xs sm:text-sm text-gray-500 line-clamp-2">Game marketplace interface inspired by digital game stores.</p>
+                        <div class="mt-2 sm:mt-4 flex items-center justify-between">
+                            <span class="text-[10px] sm:text-xs text-gray-500">HTML, CSS</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square text-xs sm:text-base text-gray-500 group-hover:text-white transition"></i>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -828,6 +826,10 @@
                     <div class="grid grid-cols-3 sm:grid-cols-4 gap-4">
                         <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><i class="devicon-vscode-plain colored text-5xl"></i><span class="text-xs text-gray-600">VS Code</span></div>
                         <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/eclipse/eclipse-original.svg" class="w-10 h-10" alt="Eclipse IDE"><span class="text-xs text-gray-600">Eclipse</span></div>
+                        <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition">
+                            <i class="devicon-androidstudio-plain colored text-5xl"></i>
+                            <span class="text-xs text-gray-600">Android Studio</span>
+                        </div>
                         <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><i class="devicon-github-original text-5xl"></i><span class="text-xs text-gray-600">GitHub</span></div>
                         <div class="flex flex-col items-center justify-center gap-2 p-3 rounded-xl hover:bg-gray-50 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" class="w-10 h-10" alt="Figma"><span class="text-xs text-gray-600">Figma</span></div>
                     </div>
@@ -958,7 +960,13 @@
                 techList.appendChild(tag);
             });
 
-            document.getElementById('liveLink').href = project.live;
+            const liveLink = document.getElementById('liveLink');
+            if (!project.live || project.live === '#') {
+                liveLink.style.display = 'none';
+            } else {
+                liveLink.style.display = 'inline-block';
+                liveLink.href = project.live;
+            }
             
             document.getElementById('projectModal').classList.add('active');
         }
@@ -990,11 +998,11 @@
                     revealObserver.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 
         revealEls.forEach((el) => revealObserver.observe(el));
 
-        // ===== Personal Projects Cover Flow (same mechanics as RUBSARB shop carousel) =====
+        // ===== Personal Projects Cover Flow =====
         (function () {
             const stage = document.getElementById('projects-coverflow');
             const track = document.getElementById('projects-coverflow-track');
@@ -1114,7 +1122,7 @@
             render();
         })();
 
-        // ===== Skills Marquee (adapted from RUBSARB CATEGORIES logo marquee) =====
+        // ===== Skills Marquee =====
         (function () {
             // ทุกโลโก้ skills ของฉัน (ภาษา, เฟรมเวิร์ค, ฐานข้อมูล, tools) — ใช้ไอคอนชุดเดียวกับใน grid ด้านล่าง
             const skillIcons = [
@@ -1165,7 +1173,7 @@
 
             function fillRow(rowEl, list) {
                 if (!rowEl) return;
-                // สร้างสองชุดต่อกัน เพื่อให้ลูปวิ่งต่อเนื่องไม่มีรอยต่อ (เหมือน RUBSARB marquee-track)
+                // สร้างสองชุดต่อกัน เพื่อให้ลูปวิ่งต่อเนื่องไม่มีรอยต่อ
                 for (let copy = 0; copy < 2; copy++) {
                     list.forEach((skill) => {
                         rowEl.appendChild(buildChip(skill));
