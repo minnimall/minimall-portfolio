@@ -716,8 +716,16 @@
                 <div id="projects-coverflow" class="coverflow-stage">
                     <div id="projects-coverflow-track" class="coverflow-track">
 
+                        <button type="button" class="coverflow-card" data-project-id="personal-5">
+                            <img src="/images/logoรับทราบ.jpg" alt="Rubsarb">
+                            <div class="coverflow-caption">
+                                <p class="text-white font-semibold text-sm truncate">Rubsarb</p>
+                                <p class="text-white/70 text-xs mt-0.5">RUBSARB — Fan Website Concept</p>
+                            </div>
+                        </button>
+
                         <button type="button" class="coverflow-card" data-project-id="personal-2">
-                            <img src="/images/compmart.png" alt="CompMart">
+                            <img src="/images/ปกComp.jpg" alt="CompMart">
                             <div class="coverflow-caption">
                                 <p class="text-white font-semibold text-sm truncate">CompMart</p>
                                 <p class="text-white/70 text-xs mt-0.5">E-Commerce Platform with Claymorphism Design</p>
@@ -725,7 +733,7 @@
                         </button>
                         
                         <button type="button" class="coverflow-card" data-project-id="personal-1">
-                            <img src="/images/MeowMoney.png" alt="MeowMoney">
+                            <img src="/images/logomeowv2.jpg" alt="MeowMoney">
                             <div class="coverflow-caption">
                                 <p class="text-white font-semibold text-sm truncate">MeowMoney</p>
                                 <p class="text-white/70 text-xs mt-0.5">Personal Finance Tracker with Cat Theme</p>
@@ -850,13 +858,13 @@
             <span class="close-modal" onclick="closeProjectModal()">&times;</span>
             <h2 id="modalTitle" class="text-2xl font-bold mb-4"></h2>
             <img id="modalImage" src="" alt="" class="w-full h-64 object-cover rounded-lg mb-4">
-            <p id="modalDescription" class="text-gray-700 mb-4"></p>
+            <p id="modalDescription" class="text-gray-700 mb-4 whitespace-pre-line"></p>
             <div id="modalTechStack" class="mb-4">
                 <h3 class="font-bold mb-2">Tech Stack:</h3>
                 <div id="techList" class="flex flex-wrap gap-2"></div>
             </div>
             <div id="modalLinks" class="flex gap-4">
-                <a id="liveLink" href="#" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Live Demo</a>
+                <a id="liveLink" href="#" target="_blank" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700">Live Demo</a>
             </div>
         </div>
     </div>
@@ -906,6 +914,13 @@
                 description: 'A website introducing Khon Kaen province, featuring information on tourist attractions, famous local cuisine, and traditions and culture.',
                 tech: ['HTML', 'CSS', 'JavaScript'],
                 live: './khonkaen.html'
+            },
+            'personal-5': {
+                title: 'Rubsarb',
+                image: '/images/ปกrubsarb.png',
+                description: 'RUBSARB — Fan Website Concept \n This is an unofficial fan-made website concept created for educational and portfolio purposes. This website is not affiliated with or endorsed by RUBSARB.',
+                tech: ['HTML', 'CSS', 'JavaScript'],
+                live: 'https://rubsarb.vercel.app/'
             },
             'uni-1': {
                 title: 'Recyclable Waste Fund System',
